@@ -1,7 +1,7 @@
-package com.aj.blog.service;
+package com.aj.blog.article;
 
 import com.aj.blog.dto.ArticleDTO;
-import com.aj.blog.entity.Article;
+import com.aj.blog.article.Article;
 
 import java.util.List;
 

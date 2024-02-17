@@ -1,6 +1,6 @@
-package com.aj.blog.repository;
+package com.aj.blog.article;
 
-import com.aj.blog.entity.Article;
+import com.aj.blog.article.Article;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

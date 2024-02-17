@@ -1,4 +1,4 @@
-package com.aj.blog.service;
+package com.aj.blog.jwt;
 
 import com.aj.blog.jwt.JWTService;
 import com.aj.blog.security.AppUserDetailsService;

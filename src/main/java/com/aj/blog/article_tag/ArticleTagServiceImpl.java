@@ -1,7 +1,8 @@
-package com.aj.blog.service;
+package com.aj.blog.article_tag;
 
-import com.aj.blog.entity.ArticleTag;
-import com.aj.blog.repository.ArticleTagRepository;
+import com.aj.blog.article_tag.ArticleTag;
+import com.aj.blog.article_tag.ArticleTagRepository;
+import com.aj.blog.article_tag.ArticleTagService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

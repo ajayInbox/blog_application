@@ -1,6 +1,6 @@
 package com.aj.blog.security;
 
-import com.aj.blog.entity.AppUser;
+import com.aj.blog.user.AppUser;
 import com.aj.blog.role.Role;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;

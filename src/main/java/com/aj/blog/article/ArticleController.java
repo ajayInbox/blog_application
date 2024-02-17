@@ -1,8 +1,8 @@
-package com.aj.blog.controller;
+package com.aj.blog.article;
 
 import com.aj.blog.dto.ArticleDTO;
-import com.aj.blog.entity.Article;
-import com.aj.blog.service.ArticleService;
+import com.aj.blog.article.Article;
+import com.aj.blog.article.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

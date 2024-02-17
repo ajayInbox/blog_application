@@ -1,7 +1,7 @@
-package com.aj.blog.controller;
+package com.aj.blog.article_tag;
 
-import com.aj.blog.entity.ArticleTag;
-import com.aj.blog.service.ArticleTagService;
+import com.aj.blog.article_tag.ArticleTag;
+import com.aj.blog.article_tag.ArticleTagService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

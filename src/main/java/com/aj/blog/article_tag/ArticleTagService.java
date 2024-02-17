@@ -1,6 +1,6 @@
-package com.aj.blog.service;
+package com.aj.blog.article_tag;
 
-import com.aj.blog.entity.ArticleTag;
+import com.aj.blog.article_tag.ArticleTag;
 
 import java.util.List;
 

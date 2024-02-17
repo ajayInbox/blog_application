@@ -1,10 +1,9 @@
-package com.aj.blog.service;
+package com.aj.blog.article;
 
 import com.aj.blog.dto.ArticleDTO;
-import com.aj.blog.entity.Article;
-import com.aj.blog.entity.ArticleTag;
+import com.aj.blog.article_tag.ArticleTag;
 import com.aj.blog.exception.ArticleNotFoundException;
-import com.aj.blog.repository.ArticleRepository;
+import com.aj.blog.article_tag.ArticleTagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
 package com.aj.blog.role;
 
-import com.aj.blog.entity.AppUser;
+import com.aj.blog.user.AppUser;
 
 import java.util.List;
 

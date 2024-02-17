@@ -1,9 +1,8 @@
 package com.aj.blog.role;
 
-import com.aj.blog.entity.AppUser;
+import com.aj.blog.user.AppUser;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

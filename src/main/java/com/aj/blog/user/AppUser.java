@@ -1,4 +1,4 @@
-package com.aj.blog.entity;
+package com.aj.blog.user;
 
 import com.aj.blog.role.Role;
 import jakarta.persistence.*;

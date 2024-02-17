@@ -1,5 +1,6 @@
-package com.aj.blog.entity;
+package com.aj.blog.article;
 
+import com.aj.blog.article_tag.ArticleTag;
 import jakarta.persistence.*;
 import lombok.*;
 

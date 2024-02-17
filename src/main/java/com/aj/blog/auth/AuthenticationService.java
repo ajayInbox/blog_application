@@ -1,9 +1,9 @@
 package com.aj.blog.auth;
 
-import com.aj.blog.entity.AppUser;
+import com.aj.blog.user.AppUser;
 import com.aj.blog.role.Role;
 import com.aj.blog.jwt.JWTService;
-import com.aj.blog.repository.ApplicationUserRepository;
+import com.aj.blog.user.ApplicationUserRepository;
 import com.aj.blog.role.RoleRepository;
 import com.aj.blog.security.AppUserDetailsService;
 import org.springframework.security.authentication.AuthenticationManager;

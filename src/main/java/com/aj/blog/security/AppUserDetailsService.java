@@ -1,6 +1,6 @@
 package com.aj.blog.security;
 
-import com.aj.blog.repository.ApplicationUserRepository;
+import com.aj.blog.user.ApplicationUserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

@@ -1,7 +1,7 @@
 package com.aj.blog.role;
 
-import com.aj.blog.entity.AppUser;
-import com.aj.blog.repository.ApplicationUserRepository;
+import com.aj.blog.user.AppUser;
+import com.aj.blog.user.ApplicationUserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
