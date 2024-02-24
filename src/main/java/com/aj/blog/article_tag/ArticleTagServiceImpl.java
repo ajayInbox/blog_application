@@ -26,12 +26,9 @@ public class ArticleTagServiceImpl implements ArticleTagService {
     public ArticleTag createTag(String tagLabel) {
         ArticleTag tag = null;
         Optional<ArticleTag> optional = tagRepository.findByTagLabel(tagLabel);
-        if(optional.isPresent()){
-            tag = optional.get();
-        }
-        tag = ArticleTag.builder()
+        tag = optional.orElseGet(() -> ArticleTag.builder()
                 .tagLabel(tagLabel)
-                .build();
+                .build());
         return tag;
     }
 
