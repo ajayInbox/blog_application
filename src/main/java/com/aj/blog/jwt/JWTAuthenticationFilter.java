@@ -33,6 +33,7 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
         String jwtToken = null;
         String userName = null;
         if(authHeader==null || !authHeader.startsWith("Bearer ")){
+            System.out.println("without authentication");
             filterChain.doFilter(request, response);
             return;
         }

@@ -1,17 +1,26 @@
 package com.aj.blog.user;
 
+import com.aj.blog.article.Article;
+import com.aj.blog.article.CustomArticleSerializer;
 import com.aj.blog.role.Role;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Table(name = "app_user")
 public class AppUser{
@@ -33,6 +42,12 @@ public class AppUser{
     @Column(name = "is_enabled")
     private boolean isEnabled = false;
 
+    @Column(name = "joined_at")
+    private LocalDate joinedAt;
+
+    @Column(name = "about_you")
+    private String aboutYou;
+
     @ManyToMany(fetch = FetchType.EAGER,
             cascade = {CascadeType.PERSIST,
                     CascadeType.MERGE, CascadeType.DETACH})
@@ -41,13 +56,7 @@ public class AppUser{
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id"))
     private Collection<Role> roles = new HashSet<>();
 
-    public AppUser(Long userId, String handleName, String email, String password,
-                   boolean isEnabled, Collection<Role> roles) {
-        this.userId = userId;
-        this.handleName = handleName;
-        this.email = email;
-        this.password = password;
-        this.isEnabled = isEnabled;
-        this.roles = roles;
-    }
+    @OneToMany(mappedBy = "user")
+    @JsonSerialize(using = CustomArticleSerializer.class)
+    private Collection<Article> articles = new HashSet<>();
 }

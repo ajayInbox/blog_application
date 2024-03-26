@@ -4,6 +4,8 @@ import com.aj.blog.user.AppUser;
 import com.aj.blog.user.ApplicationUserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,12 +26,16 @@ public class RoleServiceImpl implements RoleService{
         return roleRepository.findAll();
     }
     @Override
-    public Role createRole(Role theRole) throws Exception {
-        Optional<Role> checkRole = roleRepository.findByRoleName(theRole.getRoleName());
+    public Role createRole(String theRole) throws Exception {
+        Optional<Role> checkRole = roleRepository.findByRoleName(theRole);
         if (checkRole.isPresent()){
             throw new Exception(checkRole.get().getRoleName()+ " role already exist");
         }
-        return roleRepository.save(theRole);
+        Role newRole = Role.builder()
+                .roleName(theRole)
+                .users(Collections.EMPTY_SET)
+                .build();
+        return roleRepository.save(newRole);
     }
 
     @Override

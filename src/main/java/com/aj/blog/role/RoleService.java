@@ -5,7 +5,7 @@ import com.aj.blog.user.AppUser;
 import java.util.List;
 
 public interface RoleService {
-    Role createRole(Role role) throws Exception;
+    Role createRole(String role) throws Exception;
 
     List<Role> getAllRoles();
 

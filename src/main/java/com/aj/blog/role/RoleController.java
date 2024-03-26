@@ -23,7 +23,7 @@ public class RoleController {
         return new ResponseEntity<>(roleService.getAllRoles(), FOUND);
     }
     @PostMapping("/create")
-    public ResponseEntity<Role> createRole(@RequestBody Role role) throws Exception {
+    public ResponseEntity<Role> createRole(String role) throws Exception {
         return new ResponseEntity<>(roleService.createRole(role), CREATED);
     }
     @DeleteMapping("/delete/{id}")

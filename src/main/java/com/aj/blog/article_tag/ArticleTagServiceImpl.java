@@ -41,4 +41,13 @@ public class ArticleTagServiceImpl implements ArticleTagService {
         tagRepository.deleteById(optional.get().getTagId());
         return "Tag deleted successfully";
     }
+
+    @Override
+    public ArticleTag getTagByTagLabel(String tagLabel) throws Exception {
+        Optional<ArticleTag> optional = tagRepository.findByTagLabel(tagLabel);
+        if(optional.isEmpty()){
+            throw new Exception("Tag not Exist");
+        }
+        return optional.get();
+    }
 }

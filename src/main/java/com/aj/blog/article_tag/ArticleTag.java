@@ -1,7 +1,9 @@
 package com.aj.blog.article_tag;
 
 import com.aj.blog.article.Article;
+import com.aj.blog.article.CustomArticleSerializer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,8 +27,8 @@ public class ArticleTag {
     @Column(name = "tag_label")
     private String tagLabel;
 
-    @JsonIgnore
     @ManyToMany(mappedBy = "tags",fetch = FetchType.LAZY)
+    @JsonSerialize(using = CustomArticleSerializer.class)
     private Collection<Article> articles = new HashSet<>();
 
 }

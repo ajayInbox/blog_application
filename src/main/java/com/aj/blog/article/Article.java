@@ -1,17 +1,29 @@
 package com.aj.blog.article;
 
 import com.aj.blog.article_tag.ArticleTag;
+import com.aj.blog.user.AppUser;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 
 
 @Entity
 @Builder
 @Data
-public class Article {
+@AllArgsConstructor
+@Table(name = "articles")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "articleId")
+public class Article implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "article_id")
@@ -35,15 +47,19 @@ public class Article {
             inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "tag_id"))
     private Collection<ArticleTag> tags = new HashSet<>();
 
+    @Column(name = "created_at")
+    private LocalDate createdAt;
+
+    @Column(name = "read_time")
+    private String readTime;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private AppUser user;
+
     public Article() {
     }
 
-    public Article(Long articleId, String articleTitle, String articleBannerUrl, String articleContent, Collection<ArticleTag> tags) {
-        this.articleId = articleId;
-        this.articleTitle = articleTitle;
-        this.articleBannerUrl = articleBannerUrl;
-        this.articleContent = articleContent;
-        this.tags = tags;
-    }
 
 }

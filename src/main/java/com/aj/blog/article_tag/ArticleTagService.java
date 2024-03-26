@@ -10,4 +10,6 @@ public interface ArticleTagService {
     ArticleTag createTag(String tagLabel);
 
     String deleteTag(String tagLabel) throws Exception;
+
+    ArticleTag getTagByTagLabel(String tagLabel) throws Exception;
 }

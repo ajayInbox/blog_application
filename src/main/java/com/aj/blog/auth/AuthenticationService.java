@@ -39,6 +39,7 @@ public class AuthenticationService {
     }
 
     public String register(RegisterReq registerReq) throws Exception {
+        System.out.println("in register method");
         Optional<AppUser> user = applicationUserRepository.findByEmail(registerReq.getEmail());
         if(user.isPresent()){
             throw new Exception("User Already Present");
@@ -57,6 +58,7 @@ public class AuthenticationService {
                 .password(passwordEncoder.encode(registerReq.getPassword()))
                 .isEnabled(true)
                 .roles(Collections.singleton(role))
+                .articles(Collections.EMPTY_SET)
                 .build();
         applicationUserRepository.save(appUser);
         return "User registered successfully.";
