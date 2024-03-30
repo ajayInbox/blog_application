@@ -3,8 +3,6 @@ package com.aj.blog.user;
 import com.aj.blog.article.Article;
 import com.aj.blog.article.CustomArticleSerializer;
 import com.aj.blog.role.Role;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

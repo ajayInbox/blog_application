@@ -3,6 +3,7 @@ package com.aj.blog.article_tag;
 import com.aj.blog.article_tag.ArticleTag;
 import com.aj.blog.article_tag.ArticleTagRepository;
 import com.aj.blog.article_tag.ArticleTagService;
+import com.aj.blog.response.TagsDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -49,5 +50,25 @@ public class ArticleTagServiceImpl implements ArticleTagService {
             throw new Exception("Tag not Exist");
         }
         return optional.get();
+    }
+
+    @Override
+    public List<TagsDTO> getAllTagsV2() {
+        return tagRepository.findAllV2();
+    }
+
+    @Override
+    public ArticleTag getTagAssociatedArticlesByTagId(Long tagId) {
+        ArticleTag tag = null;
+        try{
+            Optional<ArticleTag> ops = tagRepository.findById(tagId);
+            if(ops.isEmpty()){
+                throw new Exception("Tag not found");
+            }
+            tag = ops.get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return tag;
     }
 }
