@@ -19,5 +19,6 @@ public class ArticleWithoutUserDTO {
     private String articleContent;
     private LocalDate createdAt;
     private Collection<TagsDTO> tags;
+    private String readTime;
 
 }

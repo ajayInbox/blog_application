@@ -17,4 +17,6 @@ public interface ApplicationUserService {
     AppUser saveUser(AppUser user);
 
     String deleteUserByEmail(String email);
+
+    AppUser getUserWithID(Long userId);
 }

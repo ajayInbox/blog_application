@@ -75,4 +75,19 @@ public class ApplicationUserServiceImpl implements ApplicationUserService{
         }
         return "User deleted successfully with email: "+ returnedEmail;
     }
+
+    @Override
+    public AppUser getUserWithID(Long userId) {
+        AppUser user = null;
+        try {
+            Optional<AppUser> ops = userRepository.findById(userId);
+            if (ops.isEmpty()){
+                throw new AppUserNotFoundException("User not found");
+            }
+            user = ops.get();
+        } catch (AppUserNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return user;
+    }
 }

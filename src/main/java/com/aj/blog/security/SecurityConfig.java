@@ -61,7 +61,8 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(httpReq -> httpReq
                         .requestMatchers(HttpMethod.POST,"/api/v1/auth/register", "/api/v1/auth/authenticate").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/v1/post/**", "/api/v1/posts-with-user", "/api/v1/posts-without-user", "/api/v1/post/for-latest").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v1/post/**", "/api/v1/posts-with-user", "/api/v1/posts-without-user", "/api/v1/post/for-latest", "api/v1/posts/with-tag/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v1/user/**").permitAll()
                         .requestMatchers(HttpMethod.DELETE, "/api/v1/user").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/tags/all", "/api/v1/tag/**", "/api/v1/tags/all/v2").permitAll()
                         .requestMatchers(HttpMethod.POST, "api/v1/admin/**").hasAuthority("ADMIN")

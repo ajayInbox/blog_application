@@ -49,4 +49,9 @@ public class ArticleController {
         return new ResponseEntity<>(articleService.getArticleForLatestContainer(articleId), HttpStatus.OK);
     }
 
+    @GetMapping("/posts/with-tag/{tagId}")
+    public ResponseEntity<List<Article>> getAllArticlesWithTagId(@PathVariable Long tagId){
+        return new ResponseEntity<>(articleService.getAllArticlesWithTagId(tagId), HttpStatus.OK);
+    }
+
 }

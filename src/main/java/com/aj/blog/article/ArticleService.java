@@ -17,4 +17,6 @@ public interface ArticleService {
     List<ArticleWithoutUserDTO> getAllArticlesWithoutUser();
 
     ArticleResultForLatestContainerDTO getArticleForLatestContainer(Long articleId);
+
+    List<Article> getAllArticlesWithTagId(Long tagId);
 }

@@ -68,17 +68,23 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public List<ArticleWithoutUserDTO> getAllArticlesWithoutUser() {
-        List<Article> articles = articleRepository.findAll();
-        List<ArticleWithoutUserDTO> result = new ArrayList<>();
-        for(Article article: articles){
-            ArticleWithoutUserDTO dto = mapper.map(article, ArticleWithoutUserDTO.class);
-            result.add(dto);
-        }
-        return result;
+//        List<Article> articles = articleRepository.findAll();
+//        List<ArticleWithoutUserDTO> result = new ArrayList<>();
+//        for(Article article: articles){
+//            ArticleWithoutUserDTO dto = mapper.map(article, ArticleWithoutUserDTO.class);
+//            result.add(dto);
+//        }
+//        return result;
+        return articleRepository.findArticlesWithoutUser();
     }
 
     @Override
     public ArticleResultForLatestContainerDTO getArticleForLatestContainer(Long articleId) {
         return articleRepository.getArticleForLatestContainer(articleId);
+    }
+
+    @Override
+    public List<Article> getAllArticlesWithTagId(Long tagId) {
+        return articleRepository.findAllArticlesByTagId(tagId);
     }
 }

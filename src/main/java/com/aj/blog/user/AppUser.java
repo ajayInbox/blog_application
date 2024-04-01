@@ -57,4 +57,7 @@ public class AppUser{
     @OneToMany(mappedBy = "user")
     @JsonSerialize(using = CustomArticleSerializer.class)
     private Collection<Article> articles = new HashSet<>();
+
+    @Column(name = "profile_img_url")
+    private String profileImageUrl;
 }

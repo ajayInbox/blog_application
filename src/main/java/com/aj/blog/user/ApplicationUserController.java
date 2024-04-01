@@ -26,6 +26,11 @@ public class ApplicationUserController {
         return new ResponseEntity<>(userService.getUserWithEmail(email), HttpStatus.OK);
     }
 
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<AppUser> getUserWithID(@PathVariable Long userId){
+        return new ResponseEntity<>(userService.getUserWithID(userId), HttpStatus.OK);
+    }
+
     @PostMapping("/admin")
     public ResponseEntity<String> registerUserAsAdmin(@RequestBody RegisterReq registerReq){
         return new ResponseEntity<>(userService.registerUserAsAdmin(registerReq), HttpStatus.CREATED);
