@@ -7,6 +7,7 @@ import com.aj.blog.response.ArticleResultForLatestContainerDTO;
 import com.aj.blog.response.ArticleWithoutUserDTO;
 import com.aj.blog.user.AppUser;
 import com.aj.blog.user.ApplicationUserService;
+import com.aj.blog.utils.SanitizeDTO;
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,14 +69,14 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public List<ArticleWithoutUserDTO> getAllArticlesWithoutUser() {
-//        List<Article> articles = articleRepository.findAll();
-//        List<ArticleWithoutUserDTO> result = new ArrayList<>();
-//        for(Article article: articles){
-//            ArticleWithoutUserDTO dto = mapper.map(article, ArticleWithoutUserDTO.class);
-//            result.add(dto);
-//        }
-//        return result;
-        return articleRepository.findArticlesWithoutUser();
+        List<Article> articles = articleRepository.findAll();
+        List<ArticleWithoutUserDTO> result = new ArrayList<>();
+        for(Article article: articles){
+            ArticleWithoutUserDTO dto = mapper.map(article, ArticleWithoutUserDTO.class);
+            result.add(SanitizeDTO.sanitizeDTOClass(dto));
+        }
+        return result;
+//        return articleRepository.findArticlesWithoutUser();
     }
 
     @Override

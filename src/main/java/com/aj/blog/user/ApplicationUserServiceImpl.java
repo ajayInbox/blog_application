@@ -3,6 +3,9 @@ package com.aj.blog.user;
 import com.aj.blog.auth.RegisterReq;
 import com.aj.blog.exception.AppUserNotFoundException;
 import com.aj.blog.exception.ArticleNotFoundException;
+import com.aj.blog.response.AppUserDTO;
+import com.github.dozermapper.core.DozerBeanMapperBuilder;
+import com.github.dozermapper.core.Mapper;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,7 @@ import java.util.Optional;
 public class ApplicationUserServiceImpl implements ApplicationUserService{
 
     private final ApplicationUserRepository userRepository;
+    Mapper mapper = DozerBeanMapperBuilder.buildDefault();
 
     public ApplicationUserServiceImpl(ApplicationUserRepository userRepository) {
         this.userRepository = userRepository;
@@ -79,12 +83,14 @@ public class ApplicationUserServiceImpl implements ApplicationUserService{
     @Override
     public AppUser getUserWithID(Long userId) {
         AppUser user = null;
+        AppUserDTO appUserDTO = null;
         try {
             Optional<AppUser> ops = userRepository.findById(userId);
             if (ops.isEmpty()){
                 throw new AppUserNotFoundException("User not found");
             }
             user = ops.get();
+            //appUserDTO = mapper.map(user, AppUserDTO.class);
         } catch (AppUserNotFoundException e) {
             throw new RuntimeException(e);
         }

@@ -1,5 +1,7 @@
 package com.aj.blog.role;
 
+import com.aj.blog.exception.AppUserNotFoundException;
+import com.aj.blog.exception.RoleAlreadyAssignedException;
 import com.aj.blog.user.AppUser;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +25,7 @@ public class RoleController {
         return new ResponseEntity<>(roleService.getAllRoles(), FOUND);
     }
     @PostMapping("/create")
-    public ResponseEntity<Role> createRole(String role) throws Exception {
+    public ResponseEntity<Role> createRole(String role) throws RoleAlreadyAssignedException {
         return new ResponseEntity<>(roleService.createRole(role), CREATED);
     }
     @DeleteMapping("/delete/{id}")
@@ -36,13 +38,13 @@ public class RoleController {
     }
     @PostMapping("/remove-user-from-role")
     public AppUser removeUserFromRole(@RequestParam("userId")Long userId,
-                                   @RequestParam("roleId") Long roleId) throws Exception {
+                                   @RequestParam("roleId") Long roleId) throws AppUserNotFoundException {
         return roleService.removeUserFromRole(userId, roleId);
     }
 
     @PostMapping("/assign-user-to-role")
     public AppUser assignUserToRole(@RequestParam("userId")Long userId,
-                                    @RequestParam("roleId") Long roleId) throws Exception {
+                                    @RequestParam("roleId") Long roleId) throws RoleAlreadyAssignedException {
         return roleService.assignUerToRole(userId, roleId);
     }
 }

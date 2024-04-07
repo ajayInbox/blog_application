@@ -2,6 +2,7 @@ package com.aj.blog.article;
 
 import com.aj.blog.article_tag.ArticleTag;
 import com.aj.blog.user.AppUser;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -49,6 +50,7 @@ public class Article implements Serializable {
 
     @ManyToOne()
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonSerialize(using = CustomUserSerializer.class)
     private AppUser user;
 
     public Article() {

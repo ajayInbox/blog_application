@@ -27,7 +27,7 @@ public class ArticleTag {
     @Column(name = "tag_label")
     private String tagLabel;
 
-    @ManyToMany(mappedBy = "tags",fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "tags",fetch = FetchType.EAGER)
 //    @JsonSerialize(using = CustomArticleSerializer.class)
     @JsonIgnore
     private Collection<Article> articles = new HashSet<>();

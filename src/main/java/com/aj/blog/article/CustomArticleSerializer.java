@@ -15,17 +15,9 @@ public class CustomArticleSerializer extends JsonSerializer<Collection<Article>>
     @Override
     public void serialize(Collection<Article> articles, JsonGenerator jsonGenerator,
                           SerializerProvider serializerProvider) throws IOException {
-        List<SerializedArticleDTO> obj = new ArrayList<>();
+        List<Long> obj = new ArrayList<>();
         for(Article article: articles){
-            SerializedArticleDTO newObj = SerializedArticleDTO.builder()
-                    .articleBannerUrl(article.getArticleBannerUrl())
-                    .articleId(article.getArticleId())
-                    .articleTitle(article.getArticleTitle())
-                    .articleContent(article.getArticleContent())
-                    .createdAt(article.getCreatedAt())
-                    .readTime(article.getReadTime())
-                    .build();
-            obj.add(newObj);
+            obj.add(article.getArticleId());
         }
         jsonGenerator.writeObject(obj);
     }

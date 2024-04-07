@@ -1,6 +1,7 @@
 package com.aj.blog.user;
 
 import com.aj.blog.auth.RegisterReq;
+import com.aj.blog.response.AppUserDTO;
 
 import java.util.List;
 

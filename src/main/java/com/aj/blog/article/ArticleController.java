@@ -3,6 +3,8 @@ package com.aj.blog.article;
 import com.aj.blog.dto.ArticleDTO;
 import com.aj.blog.response.ArticleResultForLatestContainerDTO;
 import com.aj.blog.response.ArticleWithoutUserDTO;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,8 @@ import java.util.List;
 @RequestMapping("/api/v1")
 public class ArticleController {
 
+    private static final Logger logger = LogManager.getLogger(ArticleController.class);
+
     @Autowired
     private final ArticleService articleService;
 
@@ -23,12 +27,14 @@ public class ArticleController {
 
     @GetMapping("/posts-with-user")
     public ResponseEntity<List<Article>> getAllArticlesWithUser() throws Exception {
+        logger.info("Inside getAllArticlesWithUser() method");
         List<Article> articles = articleService.getAllArticles();
         return new ResponseEntity<>(articles, HttpStatus.OK);
     }
 
     @GetMapping("/posts-without-user")
     public ResponseEntity<List<ArticleWithoutUserDTO>> getAllArticlesWithoutUser() {
+        logger.info("Inside getAllArticlesWithoutUser() method");
         return new ResponseEntity<>(articleService.getAllArticlesWithoutUser(), HttpStatus.OK);
     }
 

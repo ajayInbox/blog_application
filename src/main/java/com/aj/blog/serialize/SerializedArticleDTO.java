@@ -7,15 +7,12 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
+@Data@Builder@AllArgsConstructor@NoArgsConstructor
 public class SerializedArticleDTO {
 
     private Long articleId;
-    private String articleTitle;
     private String articleBannerUrl;
+    private String articleTitle;
     private String articleContent;
     private LocalDate createdAt;
     private String readTime;
